@@ -8,5 +8,11 @@
 <body>
   <h1>Welcome to My Node.js App</h1>
   <p>This is a simple UI for my Node.js application deployed on Netlify.</p>
+
+  <h2>Upload PDF to Reduce Size</h2>
+  <form id="uploadForm" enctype="multipart/form-data" action="/.netlify/functions/reduce-pdf" method="post">
+    <input type="file" name="pdf" accept="application/pdf" required>
+    <button type="submit">Upload and Reduce PDF</button>
+  </form>
 </body>
 </html>
