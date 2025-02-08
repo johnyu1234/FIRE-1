@@ -15,5 +15,29 @@
     <input type="file" name="pdf" accept="application/pdf" required>
     <button type="submit">Upload and Reduce PDF</button>
   </form>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const formData = new FormData(event.target);
+      const response = await fetch('/.netlify/functions/reduce-pdf', {
+        method: 'POST',
+        body: formData,
+      });
+      if (response.ok) {
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.style.display = 'none';
+        a.href = url;
+        a.download = 'reduced.pdf';
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+      } else {
+        alert('Error uploading and reducing PDF');
+      }
+    });
+  </script>
 </body>
 </html>
