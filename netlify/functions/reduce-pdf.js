@@ -13,6 +13,11 @@ app.use(express.urlencoded({ extended: true }));
 
 app.post('/reduce-pdf', upload.single('pdf'), async (req, res) => {
   try {
+    console.log('File uploaded:', req.file);
+    if (!req.file) {
+      console.error('No file uploaded');
+      return res.status(400).send('No file uploaded.');
+    }
     const filePath = path.join('/tmp/uploads', req.file.filename);
     const pdfBytes = fs.readFileSync(filePath);
     const pdfDoc = await PDFDocument.load(pdfBytes);
@@ -36,7 +41,7 @@ app.post('/reduce-pdf', upload.single('pdf'), async (req, res) => {
     // Clean up the uploaded file
     fs.unlinkSync(filePath);
   } catch (error) {
-    console.error(error);
+    console.error('Error processing PDF:', error);
     res.status(500).send('An error occurred while processing the PDF.');
   }
 });
