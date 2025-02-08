@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # My Node.js Application
 
 This is a simple Node.js application designed to be deployed on Netlify. It serves as a basic template for building web applications using Node.js.
@@ -39,3 +40,7 @@ Feel free to submit issues or pull requests for any improvements or features you
 ## License
 
 This project is licensed under the MIT License.
+=======
+# FIRE-1
+Creating a Node.JS application to deploy and achieve F.I.R.E
+>>>>>>> 7ad52e03b66c4d9b738cc8ea81e709c728a118fa
