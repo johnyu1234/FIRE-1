@@ -11,7 +11,7 @@ const upload = multer({ dest: '/tmp/uploads/' });
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.post('/reduce-pdf', upload.single('pdf'), async (req, res) => {
+app.post('/', upload.single('pdf'), async (req, res) => {
   try {
     console.log('File uploaded:', req.file);
     if (!req.file) {

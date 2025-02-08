@@ -5,7 +5,7 @@ const fs = require('fs');
 
 const app = express();
 
-app.get('/download-text', (req, res) => {
+app.get('/', (req, res) => {
   try {
     const filePath = path.join(__dirname, 'sample.txt');
     if (!fs.existsSync(filePath)) {
