@@ -1,4 +1,3 @@
-// filepath: /c:/Users/johny/Desktop/Projects/my-node-app/netlify.toml
 [build]
   command = "npm install"
   publish = "."
