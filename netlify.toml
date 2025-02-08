@@ -1,7 +1,7 @@
+// filepath: /c:/Users/johny/Desktop/Projects/my-node-app/netlify.toml
 [build]
-  command = "npm start"
+  command = "npm install"
   publish = "."
 
-[dev]
-  command = "npm start"
-  publish = "."
+[functions]
+  directory = "netlify/functions"
