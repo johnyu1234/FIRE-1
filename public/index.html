@@ -16,6 +16,9 @@
     <button type="submit">Upload and Reduce PDF</button>
   </form>
 
+  <h2>Download Sample Text File</h2>
+  <button id="downloadButton">Download Text File</button>
+
   <script>
     document.getElementById('uploadForm').addEventListener('submit', async (event) => {
       event.preventDefault();
@@ -43,6 +46,30 @@
       } catch (error) {
         console.error('Fetch error:', error);
         alert('Error uploading and reducing PDF: ' + error.message);
+      }
+    });
+
+    document.getElementById('downloadButton').addEventListener('click', async () => {
+      try {
+        const response = await fetch('/.netlify/functions/download-text');
+        if (response.ok) {
+          const blob = await response.blob();
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.style.display = 'none';
+          a.href = url;
+          a.download = 'sample.txt';
+          document.body.appendChild(a);
+          a.click();
+          window.URL.revokeObjectURL(url);
+        } else {
+          const errorText = await response.text();
+          console.error('Error response:', errorText);
+          alert('Error downloading text file: ' + errorText);
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+        alert('Error downloading text file: ' + error.message);
       }
     });
   </script>
