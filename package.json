@@ -1,0 +1,18 @@
+{
+  "name": "my-node-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js application ready for deployment to Netlify.",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "build": "echo 'No build step required'",
+    "deploy": "netlify deploy"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
